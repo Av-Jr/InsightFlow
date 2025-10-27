@@ -1,0 +1,47 @@
+#DisplayCardsCon{
+    position : absolute;
+    width : 80%;
+    height : 50%;
+    background : rgba(255, 255, 255, 0.7);
+    top : 70%;
+    left : 50%;
+    transform : translate(-50%, -50%);
+    padding : 10px;
+    margin : 10px;
+    border-radius : 10px;
+    display : flex;
+    flex-direction : column;
+    gap : 10px;
+    align-items : stretch;
+    justify-content : space-evenly;
+}
+
+#DCCr1, #DCCr2{
+    background : rgba(255, 255, 255, 0.3);
+    flex : 1;
+    display : flex;
+    flex-direction : row;
+    justify-content : center;
+    align-items : stretch;
+    gap : 20px;
+    overflow : hidden;
+}
+
+#DCCr1 > div{
+    flex : 1;
+    border-radius : 10px;
+    background : rgba(128, 128, 128, 0.5);
+    align-items : center;
+}
+
+#DCCr2 > div{
+    flex : 1;
+    border-radius : 10px;
+    background : rgba(128, 128, 128, 0.5);
+    align-items : center;
+}
+
+.CardLabel{
+    align-items : center;
+    text-align : center;
+}

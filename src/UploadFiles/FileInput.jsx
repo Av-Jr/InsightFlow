@@ -1,14 +1,27 @@
  import React, {useRef, forwardRef, useImperativeHandle} from 'react';
 
-const FileInput = forwardRef(({isDragging, upDragging, upFilesUploaded, filesGotUp}, ref) => {
+const FileInput = forwardRef(({isDragging, upDragging, upFilesUploaded, filesGotUp, realFiles}, ref) => {
     const refToInput = useRef(null);
 
-    const HandleFiles = (event) => {
+    const HandleFiles = async(event) => {
         event.preventDefault();
         let files = event.target.files || event.dataTransfer.files;
         if(files.length > 0){
             upFilesUploaded(true);
-            filesGotUp(prev => [...prev, ...Array.from(files)])
+            const newFiles = Array.from(files);
+            filesGotUp(prev => [...prev, ...Array.from(files)]);
+            const formData = new FormData();
+            newFiles.forEach(f => formData.append("files", f));
+
+            try {
+                const res = await fetch("http://localhost:5000/upload", {
+                    method: "POST",
+                    body: formData
+                });
+
+                const data = await res.json();
+                console.log(data.message);
+            }catch(err){console.error("upload failed", err);}
         }
         else upFilesUploaded(false);
     }
