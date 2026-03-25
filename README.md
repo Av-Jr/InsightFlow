@@ -1,4 +1,4 @@
-# Business Insights Tracker (SalesPulse)
+# InsightFlow
 
 Business Insights Tracker is an automated data analysis platform that transforms raw business CSV files into actionable financial and inventory insights. The project features a React-based interactive dashboard and a Flask-powered Python backend for robust data processing.
 
